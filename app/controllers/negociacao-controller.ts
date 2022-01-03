@@ -1,3 +1,4 @@
+import { diaDaSemana } from "../enums/dia-da-semana.enum.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
@@ -11,8 +12,6 @@ export class negociacaoController{
     private negociacoes = new Negociacoes();
     private negociacoeView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
-    private readonly DOMINGO = 0;
-    private readonly SABADO = 6;
 
     constructor(){
         this.inputData = document.querySelector('#data');
@@ -35,7 +34,7 @@ export class negociacaoController{
     }
 
     private ehDiaUtil (data:Date){
-        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO;
+        return data.getDay() > diaDaSemana.DOMINGO && data.getDay() < diaDaSemana.SABADO;
     }
 
    private  criarNegociacao(): Negociacao{
